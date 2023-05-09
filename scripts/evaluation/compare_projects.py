@@ -163,7 +163,7 @@ class Plotter:
                 log_climate = pd.DataFrame({'Generation': total_generations,
                                             "climate_and_construct": climate_and_construct})
                 #sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="Climate", ci=None, label=label)
-                sns.lineplot(ax=self.axs[count], data=log_climate, x="Generation", y="climate_and_construct", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log_climate, estimator=np.median, x="Generation", y="climate_and_construct", ci=self.ci, label=label)
 
 
             self.axs[count].ticklabel_format(useOffset=False)
@@ -185,7 +185,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["Mean"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="Mean", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="Mean", ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$\mathbb{E}(\mu)$, \npreferred state")
             self.axs[count].set(xlabel=None)
@@ -209,7 +209,7 @@ class Plotter:
                     x = log["Generation"]
                     y = log["constructed"]
 
-                    sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="constructed", ci=self.ci, label=label)
+                    sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="constructed", ci=self.ci, label=label)
 
             if ("constructed" in list(log.keys())):
 
@@ -237,7 +237,7 @@ class Plotter:
                     x = log["Generation"]
                     y = log["var_constructed"]
 
-                    sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="var_constructed", ci=self.ci, label=label)
+                    sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="var_constructed", ci=self.ci, label=label)
 
             if ("var_constructed" in list(log.keys())):
                 self.axs[count].set(xlabel="Time (in generations)")
@@ -264,7 +264,7 @@ class Plotter:
                     x = log["Generation"]
                     y = log["construct"]
 
-                    sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="construct", ci=self.ci, label=label)
+                    sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="construct", ci=self.ci, label=label)
 
             if ("construct" in list(log.keys())):
 
@@ -300,7 +300,7 @@ class Plotter:
                         max_construct_sigma = max(y)
                     print("min of sigma", min(y), "for ", key)
 
-                    sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="construct_sigma", ci=self.ci, label=label)
+                    sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="construct_sigma", ci=self.ci, label=label)
 
             if ("construct_sigma" in list(log.keys())):
                 self.axs[count].set(xlabel="Time (in generations)")
@@ -324,7 +324,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["SD"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="SD", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="SD", ci=self.ci, label=label)
 
 
             self.axs[count].set(ylabel="$\mathbb{E}(\sigma)$,\n plasticity")
@@ -344,7 +344,7 @@ class Plotter:
                 log = value[0]
                 x = log["Generation"]
                 y = log["R"]
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="R", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="R", ci=self.ci, label=label)
 
 
             self.axs[count].set(ylabel="$\mathbb{E}(r)$,\nevolvability")
@@ -366,7 +366,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["Fitness"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="Fitness", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="Fitness", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -386,7 +386,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["extinctions"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="extinctions", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="extinctions", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -405,7 +405,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["num_agents"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="num_agents", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="num_agents", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -429,7 +429,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["competition"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="competition", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="competition", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -476,7 +476,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["diversity"]
 
-                sns.lineplot(ax=self.axs[count],data=log, x="Generation", y="diversity", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count],data=log, estimator=np.median, x="Generation", y="diversity", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -495,7 +495,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["diversity_mean"]
 
-                sns.lineplot(ax=self.axs[count],data=log, x="Generation", y="diversity_mean", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count],data=log, estimator=np.median, x="Generation", y="diversity_mean", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -514,7 +514,7 @@ class Plotter:
                 x = log["Generation"]
                 y = log["diversity_sigma"]
 
-                sns.lineplot(ax=self.axs[count],data=log, x="Generation", y="diversity_sigma", ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count],data=log, estimator=np.median, x="Generation", y="diversity_sigma", ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
@@ -534,13 +534,13 @@ class Plotter:
                 x = log["Generation"]
                 y = log["Dispersal"]
 
-                sns.lineplot(ax=self.axs[count], data=log, x="Generation", y="Dispersal",ci=self.ci, label=label)
+                sns.lineplot(ax=self.axs[count], data=log, estimator=np.median, x="Generation", y="Dispersal",ci=self.ci, label=label)
 
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$D$,\ndispersal")
             self.axs[count].get_legend().remove()
-            self.axs[count].set_ylim((40, 100))
+            self.axs[count].set_ylim((60, 100))
             count += 1
 
 
