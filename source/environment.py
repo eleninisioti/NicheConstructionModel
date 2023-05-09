@@ -43,7 +43,7 @@ class Env:
 
         self.update_niches(self.niche_constructions, kill_niches=False)
 
-    def update_niches(self, total_niche_constructions, kill_niches):
+    def update_niches(self, total_niche_constructions, kill_niches=False):
         var_niche_constructions = {key: np.var(el) for key, el in total_niche_constructions.items()}
         niche_constructions = {key: np.sum(el) for key, el in total_niche_constructions.items()}
 
@@ -89,7 +89,7 @@ class Env:
                                     "constructed": niche_constructions[lat],
                                     "var_constructed": var_niche_constructions[lat]}
 
-    def step(self,  niche_constructions, kill_niches=False):
+    def step(self,  niche_constructions):
         """ Move the environment to the next generation. Updates the climate and capacity of niches based on the reference environmental state.
 
         Parameters
@@ -99,6 +99,6 @@ class Env:
         """
         self.current_capacity = self.mean * self.niche_capacity
         self.climate_values.append(self.mean)
-        self.update_niches(niche_constructions, kill_niches)
+        self.update_niches(niche_constructions)
 
 

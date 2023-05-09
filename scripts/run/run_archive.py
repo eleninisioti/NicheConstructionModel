@@ -523,7 +523,7 @@ if __name__ == "__main__":
         mode = sys.argv[2]
 
         for trial in range(trials):
-            for_manim(mode)
+            #for_manim(mode)
             #niche_construction_stable_control(mode)
             niche_construction_stable(mode)
             #niche_construction_periodic(mode)
