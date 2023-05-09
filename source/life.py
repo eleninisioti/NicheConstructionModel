@@ -64,14 +64,8 @@ class Life:
         for gen in range(self.config.num_gens):
             start_time_gen = time.time()
 
-            if gen > 500:
-                kill_niches = True
-            else:
-                kill_niches = False
-            kill_niches=False
-
             # update environment
-            self.env.step(gen, niche_constructions, kill_niches)
+            self.env.step(gen, niche_constructions)
 
             if not self.config.only_climate:
 
@@ -100,7 +94,6 @@ class Life:
                 # compute metrics for new generation
                 self.logger.log_gen(self.population, self.env)
 
-                print("this gen took ", (time.time() - start_time_gen))
 
                 time_out = (time.time() - start_time) > self.config.time_budget
 
@@ -112,7 +105,6 @@ class Life:
 
                 # reproduce population
                 niche_constructions = self.population.reproduce(self.env, stopped_NC)
-                print("constructions", [np.sum(val) for key, val in niche_constructions.items()])
 
                 if gen % 1 == 0:
                     # print progress

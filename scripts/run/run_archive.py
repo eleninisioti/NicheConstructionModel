@@ -239,7 +239,7 @@ def niche_construction_stable(mode):
     env_type = "stable"
     num_gens = 6000
     genome_types = ["niche-construction"]
-    num_niches_values = [100]
+    num_niches_values = [50]
     selection_types = ["F"]
     climate_mean_init_values = [0.2, 0.4, 0.6, 0.8, 1, 2, 4, 8]
     climate_mean_init_values = [0.6]
@@ -340,6 +340,54 @@ def niche_construction_periodic(mode):
     stop_NC_every = 0
 
 
+
+    for period in period_values:
+        for amplitude in amplitude_values:
+
+            for genome_type in genome_types:
+
+                for selection in selection_types:
+                    if not (genome_type == "evolv" and selection == "F"):
+                        project = top_dir + "S_" + selection + "_G_" + genome_type + "_N_" + str(num_niches) + \
+                                  "_climate_" + str(climate_mean_init) + "_T_" + str(period) + "_A_" + str(
+                            amplitude)
+                        values = [project, env_type, num_gens, trial, selection, genome_type, num_niches,
+                                  climate_mean_init, amplitude, period, stop_NC_every, stop_NC_for]
+                        config = dict(zip(flags, values))
+                        if mode == "local":
+                            exec_command(config)
+                        elif mode == "server":
+                            create_jzscript(config)
+
+
+def for_manim(mode):
+    top_dir = setup_dir(project="niche_construction", mode=mode) + "/for_manim/"
+
+    flags = ["--project",
+             "--env_type",
+             "--num_gens",
+             "--trial",
+             "--selection_type",
+             "--genome_type",
+             "--num_niches",
+             "--climate_mean_init",
+             "--amplitude",
+             "--period",
+             "--stop_NC_every",
+             "--stop_NC_for"
+             ]
+
+    env_type = "sin"
+    num_gens = 300
+    num_niches = 100
+    genome_types = ["evolv"]
+
+    selection_types = ["NF"]
+    climate_mean_init = 0.4
+    amplitude_values = [0.2]
+    period_values = [50]
+    stop_NC_for = 0
+    stop_NC_every = 0
 
     for period in period_values:
         for amplitude in amplitude_values:
@@ -475,6 +523,7 @@ if __name__ == "__main__":
         mode = sys.argv[2]
 
         for trial in range(trials):
+            for_manim(mode)
             #niche_construction_stable_control(mode)
             niche_construction_stable(mode)
             #niche_construction_periodic(mode)

@@ -123,7 +123,7 @@ class Plotter:
                     total = [sum(x) for x in zip(y, constructed_mean)]
                     total= total[:-1]
 
-                    sns.lineplot(ax=self.axs[count], x=generations[:-1], y=total, ci=None, label=label)
+                    sns.lineplot(ax=self.axs[count], estimator=np.median, x=generations[:-1], y=total, ci=None, label=label)
                 #sns.lineplot(ax=self.axs[count], x=x, y=y, ci=None, label=label)
 
             #self.axs[count].ticklabel_format(useOffset=False)
@@ -146,7 +146,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["Mean"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$\mathbb{E}(\mu)$, \npreferred state")
             self.axs[count].set(xlabel=None)
@@ -160,7 +160,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["construct"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$\mathbb{E}(a)$,\nconstruction")
             self.axs[count].set(xlabel=None)
@@ -178,7 +178,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["construct_sigma"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$c_{\sigma}$, variance  \n of construct ")
             self.axs[count].set(xlabel=None)
@@ -192,7 +192,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["constructed"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$C_{total}$,\n World construction ")
             self.axs[count].set(xlabel=None)
@@ -207,7 +207,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["var_constructed"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$c_{coord}$,\n NC-Coordination")
             self.axs[count].set(xlabel=None)
@@ -224,7 +224,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["SD"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$\mathbb{E}(\sigma)$,\n plasticity")
             self.axs[count].set(xlabel=None)
@@ -239,7 +239,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["R"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(ylabel="$\mathbb{E}(r)$,\nevolvability")
             self.axs[count].set(xlabel=None)
@@ -254,7 +254,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["Fitness"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$\\bar{f}$")
@@ -266,7 +266,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["extinctions"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$E$,\n extinctions")
@@ -279,7 +279,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["num_agents"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$K$,\n population size ")
@@ -292,7 +292,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["diversity"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$V$,\n diversity")
@@ -306,7 +306,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["diversity_mean"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$V_{\mu}$")
@@ -319,7 +319,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["diversity_sigma"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$V_{\sigma}$")
@@ -332,7 +332,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["diversity_mutate"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$V_{r}$")
@@ -343,7 +343,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["fixation_index"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$F_{st}$, fixation_index")
@@ -355,7 +355,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["competition"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count],  estimator=np.median,x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$C$, competition")
@@ -366,7 +366,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["not_reproduced"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$\\bar{R}$, Not reproduced")
@@ -377,7 +377,7 @@ class Plotter:
             x = self.log["Generation"]
             y = self.log["Dispersal"]
 
-            sns.lineplot(ax=self.axs[count], x=x, y=y, ci=self.ci, label=label)
+            sns.lineplot(ax=self.axs[count], estimator=np.median, x=x, y=y, ci=self.ci, label=label)
 
             self.axs[count].set(xlabel="Time (in generations)")
             self.axs[count].set(ylabel="$D$,\n Dispersal")
@@ -606,7 +606,5 @@ if __name__ == "__main__":
     top_dir = sys.argv[1]  # choose the top directory containing the projects you want to plot (relative path to
     # "../projects")
     total = int(sys.argv[2])  # if 1 only plot average across trials, if 0 only plot independently for each trial
-
-
 
     run(top_dir)
