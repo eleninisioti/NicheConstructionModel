@@ -13,5 +13,5 @@ class StableEnv(Env):
         super().__init__(mean, ref_capacity, num_niches, self.low, decay_construct)
 
     def step(self, gen, niche_constructions):
-        super().step(niche_constructions, kill_niches)
+        super().step(niche_constructions)
         return self.mean
