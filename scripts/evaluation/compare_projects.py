@@ -572,6 +572,9 @@ if __name__ == "__main__":
 
     if parameter == "selection":
         order = ["_F_G", "_N_G", "_NF_G"]
+
+    elif parameter == "num_niches":
+        order = ["_N_1_", "_N_50_", "_N_100_" ]
     else:
         order = ["evolv", "niche-construction"]
     for o in order:
@@ -630,6 +633,7 @@ if __name__ == "__main__":
 
     include = ["climate", "mutate", "num_agents", "dispersal",
                "diversity_mean", "sigma", "competition", "extinct"]
+    include = ["climate", "mutate", "sigma", "num_agents", "construct"]
 
     print("plotting")
     plotter = Plotter(project=results_dir,
