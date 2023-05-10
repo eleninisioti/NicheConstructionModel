@@ -471,6 +471,7 @@ def run(top_dir):
     log_dfs = {}
     logs_niches_total = {}
     labels = []
+    projects = [el for el in projects if ".DS" not in el]
     for project in projects:
         log_df = pd.DataFrame()
         log_niches_total = {}
@@ -547,6 +548,8 @@ def run(top_dir):
                    "sigma", "mean", "construct"]
 
     if not log_df.empty:
+
+        #labels.sort(key=float)
 
 
         for trial_dir in trial_dirs:

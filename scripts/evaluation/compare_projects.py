@@ -138,7 +138,6 @@ class Plotter:
                         trial["constructed"] = [trial["constructed"][el] for el in range(len(trial["constructed"])) if el < max(generations)]
                         for gen_idx, gen in enumerate(trial["constructed"][0::10]):
                             gen_idx = gen_idx*10
-                            print(max(climate_trial["Generation"]), gen_idx)
                             if gen_idx <= max(climate_trial["Generation"]):
                                 current_climate = climate_trial.loc[climate_trial["Generation"]==gen_idx]
                                 current_climate_list = current_climate["Climate"].tolist()
