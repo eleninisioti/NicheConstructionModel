@@ -24,9 +24,17 @@ The following two algorithms present the pseudocode of the evolutionary algorith
 The repo contains the following main elements :
 
 * folder source contains the main functionality for running a simulation
-* folder scripts contains scripts for reproducing the experiments and figures
+* folder scripts contains scripts for reproducing the experiments and figures. 
 
-To reproduce the figures without rerunning the experiments, you can download all data from [this drive](https://share.internxt.com/d/sh/folder/91dfa3b1aab9c1c540ec/c389174f8bb8fd0a0316dbc42448ea8b41e0d5162100991ba87b861a99463c26) and unzip them under a directory *projects*.
+To rerun all experiments with 10 independent trials run (inside the source directory):
+
+``python ../scripts/run/run_alife.py 10``
+
+To reproduce all figures run:
+
+``python ../scripts/evaluation/run_figures_alife.py``
+
+To reproduce the figures without rerunning the experiments, you can download all data from [this drive](https://share.internxt.com/d/sh/folder/91dfa3b1aab9c1c540ec/c389174f8bb8fd0a0316dbc42448ea8b41e0d5162100991ba87b861a99463c26) and unzip them under a top-level directory *projects*.
 
 To install all package dependencies you can create a conda environment as:
 

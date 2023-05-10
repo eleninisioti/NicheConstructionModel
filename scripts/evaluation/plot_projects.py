@@ -1,4 +1,5 @@
 """ This script can be used to produce plots for multiple projects under a common directory.
+Each project is plotted in a different file.
 
 For each project it plots:
 * the evolution of climate and population dynamics
@@ -632,7 +633,13 @@ def run(project, total):
 
 
 
+def plot_project(top_dir):
+    projects = [os.path.join("../projects/", top_dir, o) for o in os.listdir("../projects/" + top_dir)]
 
+    for project in projects:
+        if "plots" not in project and ".DS" not in project:
+            print(project)
+            run(project, total)
 
 
 if __name__ == "__main__":

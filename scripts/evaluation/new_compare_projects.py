@@ -1,7 +1,6 @@
-""" This script can be used to produce plots for multiple projects under a common directory.
-
-For each project it plots:
-* the evolution of climate and population dynamics
+""" This script can be used to compare multiple projects under a common directory.
+Each project will be a line with its own label in a common lineplot.
+Each trial is saved in a different file.
 """
 
 import sys
